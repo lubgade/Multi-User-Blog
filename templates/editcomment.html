@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    <div class="disp">
+        <div class="title">{{subject}}</div>
+        <div class="perma_content">{{content}}</div>
+        <div class="container_perma">
+            <div class="left posted_by">Posted by {{author}} at {{created.strftime("%I:%M%p")}}</div>
+            <div class="right">{{created.strftime("%b %d, %Y")}}</div>
+        </div>
+    </div>
+    <div class="edcomm">
+        <h3>Edit comment</h3>
+        <textarea name="comments" class="commentsinput">{{comments}}</textarea>
+    </div>
+    <input type="submit">
+</form>
+
+{% endblock %}

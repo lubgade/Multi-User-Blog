@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+   {% block content %}
+
+        {% for e in entries %}
+          <div class="top">
+              <a  class="blog_title" href="/blog/{{e.key().id()}}">
+              <div class="title">{{e.subject|safe}}</div>
+              </a>
+              <div>{{e.content|safe}}</div>
+              <div class="container_blog">
+                  <div class="left">
+                      <div class="posted_by">Posted By: {{e.author}}</div>
+                  </div>
+                  <div class="right">{{e.created.strftime("%b %d, %Y")}}</div>
+              </div>
+          </div>
+        {% endfor %}
+
+   {% endblock %}
+

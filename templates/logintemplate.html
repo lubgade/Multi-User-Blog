@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Login</h2>
+<span>{{invalid_user}}</span>
+<form method="post">
+    <table>
+        <col width ="80">
+        <tr>
+            <td class="inp_caption">Username</td>
+            <td class="login_width">
+                <input type="text" name="username" value="{{username}}" width="60"><span style="color:red;">{{username_error}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="inp_caption">Password</td>
+            <td class="login_width">
+                <input type="password" name="password" value="{{password}}"><span style="color:red;">{{password_error}}</span>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button>Submit</button>
+</form>
+
+{% endblock %}

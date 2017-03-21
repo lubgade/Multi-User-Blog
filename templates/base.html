@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>My Blog</title>
+</head>
+<body>
+   <div class="top_div">
+       <div class="welcomediv">
+           <nav class="userchoices">
+               {% if cookie_val %}
+               Logged in: {{user}} &nbsp;&nbsp;&nbsp;
+               <a href="/blog/newpost">New Post</a>&nbsp; | &nbsp;
+               <a href="/blog/logout">Logout</a>
+               {% else %}
+               <a href="/blog/login">Login</a>&nbsp; | &nbsp;
+               <a href="/blog/signup">Sign up</a>
+               {% endif %}
+           </nav>
+       </div>
+       <div class="main_title">
+           <a href="/blog">
+               <h1>My Blog</h1>
+           </a>
+       </div>
+   </div>
+
+   <div class="content">
+        {% block content %}
+          {{cookie_val}}
+
+        {% endblock %}
+   </div>
+
+</body>
+</html>
