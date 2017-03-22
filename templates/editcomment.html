@@ -3,7 +3,9 @@
 {% block content %}
 <form method="post">
     <div class="disp">
-        <div class="title">{{subject}}</div>
+        <div class="title">
+            <a class="blog_title" href="/blog/{{entry.key().id()}}">{{subject}}</a>
+        </div>
         <div class="perma_content">{{content}}</div>
         <div class="container_perma">
             <div class="left posted_by">Posted by {{author}} at {{created.strftime("%I:%M%p")}}</div>
