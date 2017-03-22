@@ -1,11 +1,11 @@
 # Multi-User-Blog
 
-##Overview
+## Overview
 
 This is a multi user blog made using Google App Engine. Users can sign in and post blog posts as well as 'Like' and 'Comment' on posts made on the blog. There is also an authentication system for users to register and sign in and then create log posts.
 
 
-##Setup
+## Setup
 
 * [Install Python](https://www.python.org/downloads/).
 * [Install Google App Engine SDK](https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python).
@@ -13,7 +13,7 @@ This is a multi user blog made using Google App Engine. Users can sign in and po
 * Create a new project using a unique name.
 
 
-##Usage
+## Usage
 
 * Deploy your project with `gcloud app deploy`.
   * View your project at unique-name.appspot.com.
