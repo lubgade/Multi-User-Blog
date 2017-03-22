@@ -39,6 +39,8 @@
    .userchoices {
        color: #fff;
        text-align: right;
+       margin-right: 20px;
+       font-size: large;
    }
 
    .content {
