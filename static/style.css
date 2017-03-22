@@ -47,7 +47,7 @@
      margin-top: 80px;
    }
 
-   h1 {
+   .actual_title {
      color: #fff;
      text-shadow: 3px 2px red;
      font-family: 'Kumar One';
@@ -220,7 +220,11 @@
       width: 90%;
    }
 
-   .comm_l{
+   .comm_l {
       margin-right: 10px;
    }
+
+   .line_col {
+      color: red;
+   }   
    
