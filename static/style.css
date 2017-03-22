@@ -65,6 +65,8 @@
      color: red;
      margin-bottom: 30px;
      text-align: center;
+     font-weight: bold;
+     font-size: x-large; 
    }
 
    .desc {
@@ -221,9 +223,4 @@
    .comm_l{
       margin-right: 10px;
    }
-
-   .redirect_div {
-      color: blue;
-      text-decoration: underline;
-   }
-
+   
