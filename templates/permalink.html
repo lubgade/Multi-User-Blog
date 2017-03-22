@@ -4,7 +4,9 @@
     <div class="error">{{error}}</div>
 
     <div class="disp">
-        <div class="title">{{e.subject|safe}}</div>
+        <div class="title">
+          <a class="blog_title" href="/blog/{{e.key().id()}}">{{e.subject|safe}}</a>
+        </div>
         <div class="perma_content">{{e.content|safe}}</div>
         <div class="container_perma">
            <div class="left posted_by">Posted by {{e.author}} at {{e.created.strftime("%I:%M%p")}}</div>
