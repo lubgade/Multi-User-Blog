@@ -9,8 +9,8 @@
         </div>
         <div class="perma_content">{{e.content|safe}}</div>
         <div class="container_perma">
-           <div class="left posted_by">Posted by {{e.author}} at {{e.created.strftime("%I:%M%p")}}</div>
-           <div class="right">{{e.created.strftime("%b %d, %Y")}}</div>
+           <div class="left posted_by">Posted by {{e.author}} at {{e.last_modified.strftime("%I:%M%p")}}</div>
+           <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}</div>
         </div>
     </div>
     <div>
