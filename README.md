@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a multi user blog made using Google App Engine. Users can sign in and post blog posts as well as 'Like' and 'Comment' on posts made on the blog. There is also an authentication system for users to register and sign in and then create log posts.
+This is a multi user blog made using Google App Engine. Users can sign in and post blog posts as well as 'Like' and 'Comment' on posts made on the blog. There is also an authentication system for users to register and sign in and then create blog posts.
 
 
 ## Setup
