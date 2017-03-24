@@ -67,6 +67,8 @@
      color: red;
      margin-bottom: 30px;
      text-align: center;
+     font-weight: bold;
+     font-size: x-large; 
    }
 
    .desc {
@@ -224,7 +226,7 @@
       width: 90%;
    }
 
-   .comm_l{
+   .comm_l {
       margin-right: 10px;
    }
 
