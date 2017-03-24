@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="disp">
+        <div class="title">
+            <a class="blog_title" href="/blog/{{e.key().id()}}">{{e.subject|safe
+                }}</a>
+        </div>
+        <div class="perma_content">{{e.content|safe}}</div>
+        <div class="container_perma">
+           <div class="left posted_by">Posted by {{e.author}} at
+               {{e.last_modified.strftime("%I:%M%p")}}</div>
+           <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}</div>
+        </div>
+</div>
+<div class="comments_div">
+    <form method="post">
+        <textarea name="comments" class="commentsinput"></textarea>
+        <input type="submit">
+    </form>
+</div>
+
+
+{% endblock %}

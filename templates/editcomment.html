@@ -2,12 +2,17 @@
 
 {% block content %}
 <form method="post">
+    <div class="error">{{error}}</div>
     <div class="disp">
-        <div class="title">{{subject}}</div>
+        <div class="title">
+            <a class="blog_title" href="/blog/{{entry.key().id()}}">{{subject}}
+            </a>
+        </div>
         <div class="perma_content">{{content}}</div>
         <div class="container_perma">
-            <div class="left posted_by">Posted by {{author}} at {{created.strftime("%I:%M%p")}}</div>
-            <div class="right">{{created.strftime("%b %d, %Y")}}</div>
+            <div class="left posted_by">Posted by {{author}} at
+                {{entry.created.strftime("%I:%M%p")}}</div>
+            <div class="right">{{entry.created.strftime("%b %d, %Y")}}</div>
         </div>
     </div>
     <div class="edcomm">
@@ -16,5 +21,8 @@
     </div>
     <input type="submit">
 </form>
+<a href="/blog/{{link}}">
+    <button class="go_bk">Cancel</button>
+</a>
 
 {% endblock %}

@@ -12,17 +12,19 @@
            <nav class="userchoices">
                {% if cookie_val %}
                Logged in: {{user}} &nbsp;&nbsp;&nbsp;
-               <a href="/blog/newpost">New Post</a>&nbsp; | &nbsp;
+               <a href="/blog/newpost">New Post</a>&nbsp;<span class="line_col">
+               | </span>&nbsp;
                <a href="/blog/logout">Logout</a>
                {% else %}
-               <a href="/blog/login">Login</a>&nbsp; | &nbsp;
+               <a href="/blog/login">Login</a>&nbsp;<span class="line_col">|
+               </span>&nbsp;
                <a href="/blog/signup">Sign up</a>
                {% endif %}
            </nav>
        </div>
        <div class="main_title">
            <a href="/blog">
-               <h1>My Blog</h1>
+               <h1 class="actual_title">My Blog</h1>
            </a>
        </div>
    </div>

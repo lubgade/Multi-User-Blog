@@ -39,6 +39,8 @@
    .userchoices {
        color: #fff;
        text-align: right;
+       margin-right: 20px;
+       font-size: large;
    }
 
    .content {
@@ -47,7 +49,7 @@
      margin-top: 80px;
    }
 
-   h1 {
+   .actual_title {
      color: #fff;
      text-shadow: 3px 2px red;
      font-family: 'Kumar One';
@@ -111,6 +113,7 @@
    .title {
       border-bottom: 2px solid #dcdcdc;
       font-weight: bold;
+      font-size: x-large;
    }
 
    .blog_title {
@@ -160,6 +163,8 @@
       margin-top: 20px;
       margin-bottom: 20px;
       text-transform: uppercase;
+      font-weight: bold;
+      font-size: x-large;
    }
 
    .editables, .ld_div, .ed_div {
@@ -210,6 +215,7 @@
 
    .edcomm {
       margin-top: 20px;
+      margin-bottom: 20px;
    }
 
    .comments_left {
@@ -222,8 +228,13 @@
       margin-right: 10px;
    }
 
-   .redirect_div {
-      color: blue;
-      text-decoration: underline;
+   .line_col{
+      color: red;
    }
+
+   .go_bk
+   {
+      float: right;
+   }
+
 

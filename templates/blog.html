@@ -12,7 +12,8 @@
                   <div class="left">
                       <div class="posted_by">Posted By: {{e.author}}</div>
                   </div>
-                  <div class="right">{{e.created.strftime("%b %d, %Y")}}</div>
+                  <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}
+                  </div>
               </div>
           </div>
         {% endfor %}

@@ -4,11 +4,15 @@
     <div class="error">{{error}}</div>
 
     <div class="disp">
-        <div class="title">{{e.subject|safe}}</div>
+        <div class="title">
+            <a class="blog_title" href="/blog/{{e.key().id()}}">{{e.subject|safe
+                }}</a>
+        </div>
         <div class="perma_content">{{e.content|safe}}</div>
         <div class="container_perma">
-           <div class="left posted_by">Posted by {{e.author}} at {{e.created.strftime("%I:%M%p")}}</div>
-           <div class="right">{{e.created.strftime("%b %d, %Y")}}</div>
+           <div class="left posted_by">Posted by {{e.author}} at
+               {{e.last_modified.strftime("%I:%M%p")}}</div>
+           <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}</div>
         </div>
     </div>
     <div>
@@ -18,73 +22,46 @@
                <div class="container_perma">
                    <div class="comments_left posted_by">Comment by {{c.comment_author}}</div>
                    <div class="ed_comments">
-                   <div class="comm_l">
-                       <form method="post">
-                           <input type="hidden" name="formname" value="editcomment">
-                           <input type="hidden" name="comment_id" value="{{c.key().id()}}">
-                           <a href="#" onclick="document.getElementById('editcomment').submit()">
+                       <div class="comm_l">
+                           <a href="/blog/{{e.key().id()}}/editcomment/{{c.key().id()}}">
                                <button class="fa">&#xf044;</button>
                            </a>
-                       </form>
-                   </div>
-                   <div class="">
-                       <form method="post">
-                           <input type="hidden" name="formname" value="deletecomment">
-                           <input type="hidden" name="comment_id" value="{{c.key().id()}}">
-                           <a href="#" onclick="document.getElementById('deletecomment').submit()">
+                       </div>
+                       <div class="comm_l">
+                           <a href="/blog/{{e.key().id()}}/deletecomment/{{c.key().id()}}">
                                <button class="fa">&#xf2d4;</button>
                            </a>
-                       </form>
-                   </div>
+                       </div>
                    </div>
                </div>
            </div>
         {% endfor %}
     </div>
-    <div class="comments_div">
-        <form method="post" id="addcomment">
-           <input type="hidden" name="formname" value="commentform">
-           <textarea name="comments" class="commentsinput"></textarea>
-           <input type="submit">
-        </form>
-    </div>
+    <a class="blog_title" href="/blog/{{e.key().id()}}/newcomment">New
+        Comment</a>
+
     <div class="editables">
         <div class="ld_div">
            <div class="ld_left">
-               <form method="post" id="myForm">
-                   <input type="hidden" name="formname" value="likeform">
-                   <input type="hidden" name="likes" value="like">
-                   <a class="blog_title" href="#" onclick="document.getElementById('myForm').submit()">
+                   <a class="blog_title" href="/blog/{{e.key().id()}}/like">
                        <button class="fa">&#xf087; </button>  {{e.likes}}
                    </a>
-               </form>
            </div>
            <div ld_right>
-               <form method="post" id="dislikeform">
-                   <input type="hidden" name="formname" value="dislikeform">
-                   <input type="hidden" name="dislikes" value="dislike">
-                   <a class="blog_title" href="#" onclick="document.getElementById('dislikeform').submit()">
+                   <a class="blog_title" href="/blog/{{e.key().id()}}/dislike">
                        <button class="fa">&#xf088;</button> {{e.dislikes}}
                    </a>
-               </form>
            </div>
         </div>
 
         <div class="ed_div">
             <div class="ed_left">
-                <form method="post">
-                    <input type="hidden" name="formname" value="editform">
-                    <input type="hidden" name="edit" value="edit">
-                    <a href="#" onclick="document.getElementById('editform').submit()">
+                    <a href="/blog/{{e.key().id()}}/editpost">
                         <button class="fa">&#xf044;</button>
                     </a>
-                </form>
             </div>
             <div class="ed_right">
-                <form method="post">
-                    <input type="hidden" name="formname" value="deleteform">
-                    <input type="hidden" name="delete" value="delete">
-                    <a href="#" onclick="document.getElementById('deleteform').submit()">
+                    <a href="/blog/{{e.key().id()}}/deletepost">
                         <button class="fa">&#xf2d4;</button>
                     </a>
                 </form>

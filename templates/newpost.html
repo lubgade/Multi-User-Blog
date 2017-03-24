@@ -3,16 +3,18 @@
   {% block content %}
      <h2>New Post</h2>
      <form method="post">
-         <label>
-             <div>Title</div>
-             <input type="text" name="subject" value="{{subject}}">
-         </label>
-         <label>
-             <div>Description</div>
-             <textarea name="content" class="desc">{{content}}</textarea>
-         </label>
-         <div class="error">{{error}}</div>
-         <input type="submit">
+         <div>
+             <label>
+                 <div>Title</div>
+                 <input type="text" name="subject" value="{{subject}}">
+             </label>
+             <label>
+                 <div>Description</div>
+                 <textarea name="content" class="desc">{{content}}</textarea>
+             </label>
+             <div class="error">{{error}}</div>
+             <input type="submit">
+         </div>
      </form>
 
   {% endblock %}
