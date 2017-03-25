@@ -23,20 +23,6 @@
                <div class="container_perma">
                    <div class="comments_left posted_by">Comment by
                        {{c.comment_author}}</div>
-                   <div class="ed_comments">
-                       <div class="comm_l">
-                           <a href="/blog/{{entry.key().id()}}/editcomment/
-                           {{c.key().id()}}">
-                               <button class="fa">&#xf044;</button>
-                           </a>
-                       </div>
-                       <div class="comm_l">
-                           <a href="/blog/{{entry.key().id()}}/deletecomment/
-                           {{c.key().id()}}">
-                               <button class="fa">&#xf2d4;</button>
-                           </a>
-                       </div>
-                   </div>
                </div>
            </div>
         {% endfor %}
