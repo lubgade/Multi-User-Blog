@@ -17,10 +17,7 @@ class EditCommentHandler(Handler, CookieFunctions):
                 ed_comment.comment = ed_comment.comment.replace("<br>", "\n")
                 if ed_comment:
                     if ed_comment.comment_author == user:
-                        comments_list = []
-                        for k in entry.comments:
-                            if int(k) != int(i):
-                                comments_list.append(Comment.get_comment(k))
+                        comments_list = Comment.get_comments_list(entry, i)
                         self.render("editcomment.html", subject=subject,
                                     content=content, author=entry.author,
                                     comments=ed_comment.comment, user=user,
@@ -55,11 +52,13 @@ class EditCommentHandler(Handler, CookieFunctions):
                         self.redirect('/blog/%s' % str(id))
                     else:
                         error = "Enter the comment please"
+                        comments_list = Comment.get_comments_list(entry, i)
                         self.render("editcomment.html", entry=entry,
                                     subject=entry.subject,
                                     content=entry.content,
                                     cookie_val=cookie_val, user=user,
-                                    error=error, link=id)
+                                    error=error, link=id,
+                                    comments_list=comments_list)
                 else:
                     self.redirect('/blog/%s' % str(id))
             else:
