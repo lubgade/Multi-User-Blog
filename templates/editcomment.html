@@ -16,6 +16,31 @@
             </div>
         </div>
     </div>
+    <div>
+        <h3>Comments</h3>
+        {% for c in comments_list %}
+           <div class="comments_disp">{{c.comment|safe}}
+               <div class="container_perma">
+                   <div class="comments_left posted_by">Comment by
+                       {{c.comment_author}}</div>
+                   <div class="ed_comments">
+                       <div class="comm_l">
+                           <a href="/blog/{{entry.key().id()}}/editcomment/
+                           {{c.key().id()}}">
+                               <button class="fa">&#xf044;</button>
+                           </a>
+                       </div>
+                       <div class="comm_l">
+                           <a href="/blog/{{entry.key().id()}}/deletecomment/
+                           {{c.key().id()}}">
+                               <button class="fa">&#xf2d4;</button>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        {% endfor %}
+    </div>
     <div class="edcomm">
         <h3>Edit comment</h3>
         <textarea name="comments" class="commentsinput">{{comments}}</textarea>
