@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="error">{{error}}</div>
 <div class="disp">
         <div class="title">
             <a class="blog_title" href="/blog/{{e.key().id()}}">{{e.subject|safe
@@ -13,10 +14,37 @@
            <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}</div>
         </div>
 </div>
+<div>
+        <h3>Comments</h3>
+        {% for c in comments_list %}
+           <div class="comments_disp">{{c.comment|safe}}
+               <div class="container_perma">
+                   <div class="comments_left posted_by">Comment by {{c.comment_author}}</div>
+                   <div class="ed_comments">
+                       <div class="comm_l">
+                           <a href="/blog/{{e.key().id()}}/editcomment/{{c.key().id()}}">
+                               <button class="fa">&#xf044;</button>
+                           </a>
+                       </div>
+                       <div class="comm_l">
+                           <a href="/blog/{{e.key().id()}}/deletecomment/{{c.key().id()}}">
+                               <button class="fa">&#xf2d4;</button>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        {% endfor %}
+    </div>
 <div class="comments_div">
     <form method="post">
-        <textarea name="comments" class="commentsinput"></textarea>
-        <input type="submit">
+        <div>
+            <textarea name="comments" class="commentsinput"></textarea>
+            <input type="submit">
+            <a href="/blog/{{link}}">
+                <button type="button">Cancel</button>
+            </a>
+        </div>
     </form>
 </div>
 
