@@ -14,14 +14,24 @@ class EditCommentHandler(Handler, CookieFunctions):
                 subject = entry.subject
                 content = entry.content
                 ed_comment = Comment.get_comment(i)
+                print "i= %s" % i
                 ed_comment.comment = ed_comment.comment.replace("<br>", "\n")
                 if ed_comment:
                     if ed_comment.comment_author == user:
+                        comments_list = []
+                        for k in entry.comments:
+                            print "k= %s" % k
+                            if k:
+                                print i
+                                print k
+                                if k != i:
+                                    comments_list.append(Comment.get_comment(k))
                         self.render("editcomment.html", subject=subject,
                                     content=content, author=entry.author,
                                     comments=ed_comment.comment, user=user,
                                     cookie_val=cookie_val,
-                                    created=entry.created, entry=entry, link=id)
+                                    created=entry.created, entry=entry,
+                                    link=id, comments_list=comments_list)
                     else:
                         error = "You are not authorized to edit this comment"
                         self.render("choices_error.html", error=error, link=id)
