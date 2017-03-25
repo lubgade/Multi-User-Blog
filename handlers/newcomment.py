@@ -13,8 +13,13 @@ class NewCommentHandler(Handler, CookieFunctions):
             user = User.get_user_name(cookie_val)
             e = Blog.get_blog_entry(id)
             if e:
+                comments_list = []
+                for k in e.comments:
+                    if e.comments:
+                        comments_list.append(Comment.get_comment(k))
                 self.render('newcomment.html', e=e, id=id,
-                            cookie_val=cookie_val, user=user)
+                            cookie_val=cookie_val, user=user,
+                            comments_list=comments_list, link=id)
             else:
                 self.redirect('/blog')
         else:
@@ -27,17 +32,27 @@ class NewCommentHandler(Handler, CookieFunctions):
             e = Blog.get_blog_entry(id)
             if e:
                 text_comment = self.request.get("comments")
-                text_comment = text_comment.replace('\n', '<br>')
-                text_comment = db.Text(text_comment)
-                text_comment = db.Text(bleach.clean(text_comment,
-                                                    tags=tags_content))
-                new_comment = Comment(comment=text_comment,
-                                      comment_author=user)
-                new_comment.put()
-                i = new_comment.key().id()
-                e.comments.append(i)
-                e.put()
-                self.redirect('/blog/%s' % str(id))
+                if text_comment:
+                    text_comment = text_comment.replace('\n', '<br>')
+                    text_comment = db.Text(text_comment)
+                    text_comment = db.Text(bleach.clean(text_comment,
+                                                        tags=tags_content))
+                    new_comment = Comment(comment=text_comment,
+                                          comment_author=user)
+                    new_comment.put()
+                    i = new_comment.key().id()
+                    e.comments.append(i)
+                    e.put()
+                    self.redirect('/blog/%s' % str(id))
+                else:
+                    error = "Enter comment please"
+                    comments_list = []
+                    for k in e.comments:
+                        if e.comments:
+                            comments_list.append(Comment.get_comment(k))
+                    self.render("newcomment.html", e=e, cookie_val=cookie_val,
+                                user=user, comments_list=comments_list,
+                                error=error, link=id)
             else:
                 self.redirect('/blog')
         else:
