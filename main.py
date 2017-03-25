@@ -97,7 +97,6 @@ from models.blog import Blog
 from models.loggedinusers import LoggedinUsers
 
 
-
 from handlers.mainpage import MainPage
 from handlers.newpost import NewpostHandler
 from handlers.permalink import PermalinkHandler
