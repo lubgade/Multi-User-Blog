@@ -11,18 +11,21 @@
         <div class="perma_content">{{content}}</div>
         <div class="container_perma">
             <div class="left posted_by">Posted by {{author}} at
-                {{entry.created.strftime("%I:%M%p")}}</div>
-            <div class="right">{{entry.created.strftime("%b %d, %Y")}}</div>
+                {{entry.last_modified.strftime("%I:%M%p")}}</div>
+            <div class="right">{{entry.last_modified.strftime("%b %d, %Y")}}
+            </div>
         </div>
     </div>
     <div class="edcomm">
         <h3>Edit comment</h3>
         <textarea name="comments" class="commentsinput">{{comments}}</textarea>
     </div>
-    <input type="submit">
-</form>
-<a href="/blog/{{link}}">
-    <button class="go_bk">Cancel</button>
-</a>
+    <div class="perma_content">
+        <input type="submit">
+        <a href="/blog/{{link}}">
+            <button type="button">Cancel</button>
+        </a>
+    </div>
 
+</form>
 {% endblock %}
