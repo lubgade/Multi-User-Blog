@@ -10,12 +10,12 @@ class NewCommentHandler(Handler, CookieFunctions):
     def get(self, id):
         cookie_val = self.cookie_check()
         if cookie_val:
-            user = User.get_user_name(cookie_val)
+            user = User.get_user(cookie_val)
             e = Blog.get_blog_entry(id)
             if e:
                 comments_list = Comment.get_comments_list(e, 0)
                 self.render('newcomment.html', e=e, id=id,
-                            cookie_val=cookie_val, user=user,
+                            cookie_val=cookie_val, user=user.name,
                             comments_list=comments_list, link=id)
             else:
                 self.redirect('/blog')
@@ -25,7 +25,7 @@ class NewCommentHandler(Handler, CookieFunctions):
     def post(self, id):
         cookie_val = self.cookie_check()
         if cookie_val:
-            user = User.get_user_name(cookie_val)
+            user = User.get_user(cookie_val)
             e = Blog.get_blog_entry(id)
             if e:
                 text_comment = self.request.get("comments")
@@ -35,7 +35,7 @@ class NewCommentHandler(Handler, CookieFunctions):
                     text_comment = db.Text(bleach.clean(text_comment,
                                                         tags=tags_content))
                     new_comment = Comment(comment=text_comment,
-                                          comment_author=user)
+                                          comment_author=user.name)
                     new_comment.put()
                     i = new_comment.key().id()
                     e.comments.append(i)
@@ -45,7 +45,7 @@ class NewCommentHandler(Handler, CookieFunctions):
                     error = "Enter comment please"
                     comments_list = Comment.get_comments_list(e, 0)
                     self.render("newcomment.html", e=e, cookie_val=cookie_val,
-                                user=user, comments_list=comments_list,
+                                user=user.name, comments_list=comments_list,
                                 error=error, link=id)
             else:
                 self.redirect('/blog')
