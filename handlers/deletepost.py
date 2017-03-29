@@ -9,8 +9,8 @@ class DeletePostHandler(Handler, CookieFunctions):
         if e:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
-                if e.author == user:
+                user = User.get_user(cookie_val)
+                if e.author.name == user.name:
                     e.delete()
                     self.render("deletepost.html")
                 else:
