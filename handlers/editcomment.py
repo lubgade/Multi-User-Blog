@@ -10,17 +10,17 @@ class EditCommentHandler(Handler, CookieFunctions):
         if entry:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
+                user = User.get_user(cookie_val)
                 subject = entry.subject
                 content = entry.content
                 ed_comment = Comment.get_comment(i)
                 ed_comment.comment = ed_comment.comment.replace("<br>", "\n")
                 if ed_comment:
-                    if ed_comment.comment_author == user:
+                    if ed_comment.comment_author == user.name:
                         comments_list = Comment.get_comments_list(entry, i)
                         self.render("editcomment.html", subject=subject,
                                     content=content, author=entry.author,
-                                    comments=ed_comment.comment, user=user,
+                                    comments=ed_comment.comment, user=user.name,
                                     cookie_val=cookie_val,
                                     created=entry.created, entry=entry,
                                     link=id, comments_list=comments_list)
@@ -39,7 +39,7 @@ class EditCommentHandler(Handler, CookieFunctions):
         if entry:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
+                user = User.get_user(cookie_val)
                 ed_comment = Comment.get_comment(i)
                 if ed_comment:
                     ed_comment.comment = self.request.get("comments")
@@ -55,8 +55,8 @@ class EditCommentHandler(Handler, CookieFunctions):
                         comments_list = Comment.get_comments_list(entry, i)
                         self.render("editcomment.html", entry=entry,
                                     subject=entry.subject,
-                                    content=entry.content,
-                                    cookie_val=cookie_val, user=user,
+                                    content=entry.content, author=user,
+                                    cookie_val=cookie_val, user=user.name,
                                     error=error, link=id,
                                     comments_list=comments_list)
                 else:
