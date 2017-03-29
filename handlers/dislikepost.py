@@ -10,10 +10,10 @@ class DisLikePostHandler(Handler, CookieFunctions):
         if e:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
+                user = User.get_user(cookie_val)
                 if e.author != user:
-                    if user not in e.disliked_by:
-                        if user not in e.liked_by:
+                    if user.name not in e.disliked_by:
+                        if user.name not in e.liked_by:
                             e.disliked_by.append(user.name)
                             e.put()
                             self.redirect('/blog/%s' % str(id))
