@@ -12,10 +12,10 @@ class EditPostHandler(Handler, CookieFunctions):
             content = content.replace("<br>", "\n")
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
-                if e.author == user:
+                user = User.get_user(cookie_val)
+                if e.author.name == user.name:
                     self.render("editpost.html", subject=e.subject,
-                                content=content, user=user,
+                                content=content, user=user.name,
                                 cookie_val=cookie_val, e=e, link=id)
                 else:
                     error = "You are not authorized to edit this post"
@@ -30,7 +30,7 @@ class EditPostHandler(Handler, CookieFunctions):
         if e:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
+                user = User.get_user(cookie_val)
                 subject = self.request.get("subject")
                 content = self.request.get("content")
                 if subject and content:
@@ -43,7 +43,7 @@ class EditPostHandler(Handler, CookieFunctions):
                     error = "subject and content, please"
                     self.render("editpost.html", error=error, subject=subject,
                                 content=content, cookie_val=cookie_val,
-                                user=user, link=id)
+                                user=user.name, link=id)
             else:
                 self.redirect('/blog/login')
         else:
