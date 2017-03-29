@@ -9,7 +9,7 @@
         </div>
         <div class="perma_content">{{e.content|safe}}</div>
         <div class="container_perma">
-           <div class="left posted_by">Posted by {{e.author}} at
+           <div class="left posted_by">Posted by {{e.author.name}} at
                {{e.last_modified.strftime("%I:%M%p")}}</div>
            <div class="right">{{e.last_modified.strftime("%b %d, %Y")}}</div>
         </div>
