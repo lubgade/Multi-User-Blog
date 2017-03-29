@@ -11,7 +11,7 @@ class LikePostHandler(Handler, CookieFunctions):
             cookie_val = self.cookie_check()
             if cookie_val:
                 user = User.get_user(cookie_val)
-                if e.author != user:
+                if e.author.name != user.name:
                     if user.name not in e.liked_by:
                         if user.name not in e.disliked_by:
                             e.liked_by.append(user.name)
