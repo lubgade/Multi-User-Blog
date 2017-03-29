@@ -12,6 +12,7 @@ class MainPage(Handler, CookieFunctions):
                               "LIMIT 6")
         cookie_val = self.cookie_check()
         if cookie_val:
-            user = User.get_user_name(cookie_val)
+            user = User.get_user(cookie_val)
+            user = user.name
         self.render('blog.html', subject="", content="", entries=entries,
                     user=user, cookie_val=cookie_val)
