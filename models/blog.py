@@ -1,12 +1,13 @@
 # noinspection PyUnresolvedReferences
 from google.appengine.ext import db
+from main import *
 
 class Blog(db.Model):
     subject = db.StringProperty(required=True)
     content = db.TextProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
     last_modified = db.DateTimeProperty(auto_now=True)
-    author = db.StringProperty()
+    author = db.ReferenceProperty(User)
     comments = db.ListProperty(int)
     liked_by = db.ListProperty(str)
     disliked_by = db.ListProperty(str)
