@@ -8,6 +8,6 @@ class User(db.Model):
     email = db.StringProperty()
 
     @classmethod
-    def get_user_name(cls, cookie_val):
-        user = User.get_by_id(int(cookie_val))
-        return user.name
+    def get_user(cls, cookie_val):
+        key = db.Key.from_path('User', int(cookie_val))
+        return db.get(key)
