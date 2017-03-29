@@ -9,10 +9,10 @@ class DeleteCommentHandler(Handler, CookieFunctions):
         if e:
             cookie_val = self.cookie_check()
             if cookie_val:
-                user = User.get_user_name(cookie_val)
+                user = User.get_user(cookie_val)
                 obj = Comment.get_comment(i)
                 if obj:
-                    if obj.comment_author == user:
+                    if obj.comment_author == user.name:
                         obj.delete()
                         e.comments.remove(int(i))
                         e.put()
